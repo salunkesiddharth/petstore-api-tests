@@ -1,0 +1,17 @@
+{
+  "name": "petstore-api-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "mocha tests/**/*.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "axios": "^1.7.7",
+    "chai": "^5.1.2",
+    "mocha": "^10.8.2"
+  }
+}
