@@ -14,6 +14,14 @@ This is an API automation project focused on automating the `/pet` endpoint of [
 
 The project is organized to facilitate ease of adding new tests and enhancing test coverage. The primary focus is on covering various scenarios for the `/pet` endpoint of the API.
 
+The folder structure in the repo consists of a `tests` directory, which contains two subdirectories:
+
+1. **api**: This subdirectory contains test files related to API endpoints. It includes various test scripts that verify the functionality, reliability, and behavior of the API. Currently, it is focused on the `/pet` endpoint of the Swagger Petstore.
+
+2. **data**: This subdirectory holds test data used by the API tests. The files here may define sample request payloads, expected response structures, or any other test-related data needed for performing different scenarios, such as positive and negative test cases. Currently, it hosts an image file that is used to send an api request to the /uploadImage endpoint
+
+This structure helps keep test scripts organized and maintains a clear separation between the test logic (`api`) and the data (`data`).
+
 ## Getting Started
 
 ### Prerequisites
@@ -47,6 +55,7 @@ npm test
 
 - The project uses GitHub Actions to run the tests automatically on pull requests (PRs).
 - The CI workflow ensures that all tests are executed in a controlled and consistent environment before any code is merged.
+- The tests can also be triggered manually using a workflow_dispatch event.
 
 ## Future Scope
 
