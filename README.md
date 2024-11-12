@@ -2,6 +2,10 @@
 
 This is an API automation project focused on automating the `/pet` endpoint of [Swagger Petstore](https://petstore.swagger.io/#/). The purpose of this project is to provide automated tests for the `/pet` endpoint, ensuring API stability and proper functioning of various endpoints.
 
+## Disclaimer
+
+**Please note** that the default branch for this repository has been changed from `main` to `feature/SiddharthSalunke-CBATest`. This change was made in order to support the execution of the `workflow_dispatch` trigger event, which can only be triggered on the default branch (and not on a non-default branch) when it's first added. More information about running the tests on CI can be found in the [CI/CD](#cicd) section below.
+
 ## Tech Stack
 
 - **Programming Language**: Node.js
