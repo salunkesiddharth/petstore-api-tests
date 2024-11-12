@@ -23,15 +23,19 @@ jobs:
         with:
           node-version: 20
 
-      - name: Reuse node dependencies
+      - name: Reuse Node Modules
+        timeout-minutes: 5
+        id: cache-node-modules
         uses: actions/cache@v4
         with:
-          path: |
-            ~/.npm
-            node_modules
-          key: npm-and-node-modules-cache-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            npm-and-node-modules-cache-
+          path: node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Install npm dependencies
+        timeout-minutes: 5
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm install
+        working-directory: .
 
       - name: Run petstore api tests
         run: npm run test
