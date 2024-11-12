@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha tests/**/*.js"
+    "test": "mocha tests/api/*.js"
   },
   "author": "",
   "license": "ISC",

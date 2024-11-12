@@ -1,0 +1,37 @@
+name: Run all cypress tests in parallel for pull requests
+
+on:
+  push:
+    branches:
+      - feature/SiddharthSalunke-CBATest
+
+concurrency:
+  group: pr-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  petstore-api-tests:
+    name: Running automated API tests using Axios for the Petstore app.
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install NodeJS 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Reuse node dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            node_modules
+          key: npm-and-node-modules-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            npm-and-node-modules-cache-
+
+      - name: Run petstore api tests
+        run: npm run test
