@@ -1,0 +1,44 @@
+name: Run all Axios tests
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  petstore-api-tests:
+    name: Running automated API tests using Axios for the Petstore app.
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install NodeJS 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Reuse Node Modules
+        timeout-minutes: 5
+        id: cache-node-modules
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: modules-${{ hashFiles('package-lock.json') }}
+
+      - name: Install npm dependencies
+        timeout-minutes: 5
+        if: steps.cache-node-modules.outputs.cache-hit != 'true'
+        run: npm install
+        working-directory: .
+
+      - name: Run petstore api tests
+        run: npm run test
