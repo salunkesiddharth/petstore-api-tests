@@ -55,7 +55,7 @@ npm test
 
 - The project uses GitHub Actions to run the tests automatically on pull requests (PRs).
 - The CI workflow ensures that all tests are executed in a controlled and consistent environment before any code is merged.
-- The tests can also be triggered manually using a workflow_dispatch event.
+- The tests can also be triggered manually using a `workflow_dispatch` event. This has been made possible to try out only because I've changed the default branch from `main` to `feature/SiddharthSalunke-CBATest`. You can try to trigger the tests by going [here](https://github.com/salunkesiddharth/petstore-api-tests/actions/workflows/pull-request.yml) and then clicking on `Run workflow` and selecting the branch `feature/SiddharthSalunke-CBATest`
 
 ## Future Scope
 

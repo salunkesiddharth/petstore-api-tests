@@ -1,4 +1,4 @@
-name: Run all cypress tests in parallel for pull requests
+name: Run all Axios tests
 
 on:
   workflow_dispatch:
